@@ -15,6 +15,13 @@ from pymongo import Connection
 
 import hashlib
 
+#API Imports
+import etsy_api
+from etsy_api import (Etsy_API, Listings)
+
+import doco_api
+import nyt_newswire_fetch
+
 from config import SECRET_KEY, PORT
 
 # SECRET_KEY = "
@@ -86,7 +93,31 @@ def process_google_maps():
     google_json = requests.get("https://maps.googleapis.com/maps/api/place/search/json?"+args)
     google_json = google_json.text
 
-    return google_json 
+    return google_json
+
+@app.route('/etsy-results/')
+def etsy():
+    results = etsy_api.Listings().findAllListingActive('nyancat')
+    data = ""
+    for item in results['results']:
+        data += item['title']+'<br />'
+        data += item['url']+'<br />'
+
+    return data
+
+@app.route('/dc-results/')
+def donors_choose():
+    data_dict = doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
+    return_value = ""
+    for item in data_dict['proposals']:
+        return_value += item['fundURL'] 
+    
+    return return_value
+
+@app.route('/nyt/')
+def nyt():
+    data = nyt_newswire_fetch.getArticle()
+    return data
 
 if __name__=="__main__":
     app.run(debug=True, host='0.0.0.0', port=PORT)

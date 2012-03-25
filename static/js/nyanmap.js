@@ -57,7 +57,7 @@ var place_markers = function(nearby_locations)
 {
     for(var i=0; i<nearby_locations.length; i++){
 	var marker = new google.maps.Marker({
-	    position new google.maps.LatLng(nearby_locations[i].lat,nearby_locations[i].lng),
+	    position: new google.maps.LatLng(nearby_locations[i].lat,nearby_locations[i].lng),
 	    map: map,
 	    title: nearby_locations[i].name
 	});

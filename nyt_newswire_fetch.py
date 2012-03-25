@@ -6,6 +6,7 @@
 import requests
 import json
 import time
+import re
 
 from config import NYT_API_KEY, PARSELY_API_URL
 
@@ -40,4 +41,8 @@ while status["status"] != "DONE":
     # reget the parse
     r = requests.get(PARSELY_API_URL+status_url)
     status = json.loads(r.content)
-print(status["data"])
+
+data= re.sub("<TOPIC>.*?</TOPIC>",
+             "<img src ='http://farm6.staticflickr.com/5149/buddyicons/1636317@N24.jpg?1303318659'></img>",
+             status["data"]);
+print data

@@ -30,7 +30,7 @@ function initialize(lat,lng) {
 	var lat = cat_location.lat;
 	var lng = cat_location.lng;
 	var places_url = "http://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";//don't put actual api key
-	console.log($.getJSON(places_url);
+	console.log($.getJSON(places_url));
 	nearby_locations = $.getJSON(places_url).results;//ask server for json data, stores in nearby in api.js
 	console.log(nearby_locations);
 	//function that loads markers from json data

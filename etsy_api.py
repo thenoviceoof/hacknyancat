@@ -68,7 +68,6 @@ class Listings(Etsy_API):
 
 """ to use:
 import etsy_api
-from api import (Etsy_API, Listings)
-etsy_api = Etsy_API()
+from etsy_api import (Etsy_API, Listings)
 etsy_api.Listings().findAllListingActive('nyancat')
 """

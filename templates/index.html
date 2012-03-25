@@ -15,28 +15,48 @@
     <script src="../static/js/api.js"></script>
     <script src="../static/js/nyanmap.js"></script>
 
+    <link href="/static/css/news_nyan.css" type="text/css" rel="stylesheet"/>
+    <script src="/static/js/news_nyan.js"></script>
+
+    <script src="/static/js/load_sidebar.js"></script>
     
   </head>
+
   <body onload="initialize(40.728429,-73.995605)">
    <div id="top_bar">
      <img id="hacknyancat" src="../static/hacknyancat_logo.png" width="102" height="35"/>
-     <a href="https://foursquare.com/oauth2/authenticate?client_id=IGHYIIQIRRVUGIMJ05XGMGXIGH25WVZ5CLFM53C5BXXQXHTN&response_type=code&{{ FS_REDIRECT_URI }}">Sign in with Foursquare to list locations near NyanCat!</a>
-     <a href="etsy-results/">Nyancat on Etsy!</a>
-     <a href="dc-results/">Nearby Donors Choose Projects!</a>
-     <a href="nyt/">Nyancat in the news!</a>
-     <a href="static/longtail.html">Watch Nyancat with Longtail's JWPlayer</a>
    </div>
+
+
+   <div id="map_and_sidebar_div">
+
    <div id="nyancat">
       <img src="../static/nyancat.gif" alt="nyancat" width="100" height="70" />
     </div>
 
-    <div id="map_canvas" style="width:100%; height:100%">
-<!--      <div id="nyancat"><img src="nyancat.gif" alt="nyancat" /></div>-->
+    <div id="map_canvas">
+      <!-- <div id="nyancat"><img src="nyancat.gif" alt="nyancat" /></div> -->
     </div>
 
     <div id="sidebar">
-      buttons!
+      <div id="foursquare-sidebar">
+        <a href="https://foursquare.com/oauth2/authenticate?client_id=IGHYIIQIRRVUGIMJ05XGMGXIGH25WVZ5CLFM53C5BXXQXHTN&response_type=code&{{ FS_REDIRECT_URI }}">
+          <button>Foursquare</button>
+        </a>
+      </div>
+
+      <iframe src="/etsy-results/">
+      </iframe>
+
+      <iframe src="/dc-results">
+      </iframe>
+
+      <iframe src="/static/longtail.html">
+      </iframe>
     </div>
+
+   </div>
+
   </body>
  
 </html>

@@ -78,8 +78,8 @@ code=%s" % (FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI, usercode)
     usercode_json = json.loads(usercode_json.text)
 
     foursquare_url = 'https://api.foursquare.com/v2/venues/search?\
-radius=1000&v=20120425&ll=%s,-%s&oauth_token=\
-%s' % (str(session['lat']), str(session['long']), usercode_json['access_token'])
+radius=1000&v=20120425&ll=%f,%f&oauth_token=\
+%s' % (session['lat'],session['long'], usercode_json['access_token'])
     data = requests.get(foursquare_url)
 
     data = data.text
@@ -128,16 +128,20 @@ def etsy():
 
 @app.route('/dc-results/')
 def donors_choose():
-    data_dict = doco_api.Geo().ProjectsNearLatLong(session['lat'],session['long'])
+    titles, links = doco_api.Geo().ProjectsNearLatLong(session['lat'],session['long'])
     return_value = ""
-    for item in data_dict['proposals']:
-        return_value += item['fundURL'] 
-    
+    idx = 0
+    while idx != len(titles):
+        return_value += titles[idx] + "<br />" + links[idx] + "<br />"
+        idx += 1
     return return_value
 
 @app.route('/newswire/')
 def nyt():
-    news_obj = db.users.find().sort({"time": -1})[0]
+    try:
+        news_obj = db.news.find().sort("time", direction=-1)[0]
+    except:
+        return "Nyan "*50
     if news_obj:
         return news_obj["news"]
     else:

@@ -1,0 +1,20 @@
+#ticker-tape {
+    position:absolute;
+    top:0;
+    height:1.3em;
+    width:100%;
+    overflow:hidden;
+    font-family:sans-serif;
+    color:white;
+    background-color:black;
+}
+
+#ticker-tape p {
+    position:relative;
+    margin:0;
+    width:999999px;
+}
+
+.news_nyan, #ticker-tape img {
+    height:1em;
+}

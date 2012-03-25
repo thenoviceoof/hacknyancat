@@ -36,6 +36,8 @@ except ImportError:  # pragma: no cover
     # For Python 3.
     from urllib.request import urlopen
 
+import requests
+
 
 class Doco_API(object):
     """Hacked single-use wrapper for Doco API"""
@@ -46,10 +48,12 @@ class Doco_API(object):
 
     def call_api(self, directory):
         url_list = [self.base_url]
-        url_list.append('&APIKey=' + API_KEY)
+        url_list.append('&APIKey=%s' % API_KEY)
+        url_list.append('&%s' % str(directory))
         url = ''.join(url_list)
-        data = urlopen(url).read()
-        return json.loads(data)
+        print url
+        r = requests.get(url)
+        return json.loads(r.content)
 
 
 class Geo(Doco_API):
@@ -69,5 +73,6 @@ class Geo(Doco_API):
 """ to use:
 import doco_api
 from doco_api import (Doco_API, Geo)
-doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
+testAPI = doco_api.Geo()
+testAPI.ProjectsNearLatLong(40.776104,-73.920822)
 """

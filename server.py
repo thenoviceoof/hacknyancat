@@ -2,10 +2,15 @@ from flask import Flask, session, redirect, url_for, escape, request
 from flask import render_template
 
 import pymongo
+from pymongo import Connection
+
+from config import SECRET_KEY
+
+################################################################################
 
 # defaults to /static and /templates
 app = Flask(__name__)
-app.secret_key="eaf42496e70cdd2f73ea9a9fe56c19c3"
+app.secret_key = SECRET_KEY
 
 @app.route('/')
 def index():

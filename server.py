@@ -22,13 +22,6 @@ app.secret_key = SECRET_KEY
 
 # API ids
 
-#Foursquare
-FS_CLIENT_ID = "IGHYIIQIRRVUGIMJ05XGMGXIGH25WVZ5CLFM53C5BXXQXHTN"
-FS_CLIENT_SECRET = "E4EATPZBLVLMTJSIUZRK3T2O3UGR4IARF50UP35Q0Y0KJ5TP"
-FS_REDIRECT_URI = urllib.urlencode([("redirect_uri","http://nyancat.ninjapiraterockstardeveloper.com/apifeedback/foursquare")])
-
-
-
 @app.route('/')
 def index():
     if not('user' in session):

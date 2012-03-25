@@ -28,3 +28,13 @@ testAPI.ProjectsNearLatLong(40.776104,-73.920822)
 http://api.donorschoose.org/common/json_feed.html?&APIKey=DONORSCHOOSE&centerLat=40.776104&centerLng=-73.920822
 {u'index': u'0', u'max': u'10', u'proposals': [{u'totalPrice': u'273.85', u'percentFunded': u'0', u'schoolName': u'Ps 122 Mamie Fay', u'fundURL': u'https://secure.donorschoose.org/donors/givingCart.html?proposalid=718970&amp;donationAmount=&amp;utm_source=api&amp;utm_medium=feed&amp;utm_content=fundlink&amp;utm_campaign=DONORSCHOOSE', u'expirationDate': u'2012-06-13', u'proposalURL': u'http://www.donorschoose.org/donors/proposal.html?id=718970&amp;utm_source=api&amp;utm_medium=
 
+~~~
+Tumblr API
+
+import tumblr_api
+from tumblr_api import (Tumblr_API, Posts)
+testAPI = tumblr_api.Posts()
+testAPI.PhotosFromUser('nyancatwashere')
+
+=> Sample Results
+[u'http://27.media.tumblr.com/tumblr_lvhtm8h3CL1qm280wo1_500.jpg', u'http://30.media.tumblr.com/tumblr_lvhtpgBwNn1qm280wo1_400.jpg', u'http://29.media.tumblr.com/tumblr_lvhtoffPoR1qm280wo1_400.jpg', u'http://30.media.tumblr.com/tumblr_lvhtmtnnHQ1qm280wo1_500.jpg', u'http://www.tumblr.com/photo/1280/nyancatwashere/13972524882/1/tumblr_lvhtk0mw281qm280w', u'http://www.tumblr.com/photo/1280/nyancatwashere/13925449117/1/tumblr_lvhacjq8A31qm280w', ...

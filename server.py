@@ -138,7 +138,10 @@ def donors_choose():
 
 @app.route('/newswire/')
 def nyt():
-    news_obj = db.news.find().sort("time", direction=-1)[0]
+    try:
+        news_obj = db.news.find().sort("time", direction=-1)[0]
+    except:
+        return "Nyan "*50
     if news_obj:
         return news_obj["news"]
     else:

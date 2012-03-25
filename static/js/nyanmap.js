@@ -33,7 +33,7 @@ function initialize(lat,lng) {
 	console.log($.getJSON(places_url));
 	nearby_locations_json = $.getJSON(places_url);//ask server for json data, stores in nearby in api.js
 	console.log(nearby_locations_json);
-	a=nearby_locations_json_results;//just to play with
+	a=nearby_locations_json;//just to play with
 	nearby_locations_json_results = nearby_locations_json.responseText.results;
 	console.log(nearby_locations_json_results);
 	if(nearby_locations_json_results != undefined){

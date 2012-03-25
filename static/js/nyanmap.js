@@ -9,12 +9,13 @@ function initialize(lat,lng) {
 				  myOptions);
 
     //remove all this hardcoded stuff later, it's just for testing getting the JSON info
+/*
     var radius = 500;
     var types = "food";
     var places_url = "http://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";
     var location_data = $.getJSON(places_url);
     console.log(location_data);
-
+*/
 
 
 

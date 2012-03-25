@@ -23,7 +23,7 @@ function initialize(lat,lng) {
     google.maps.event.addListener(map, 'mouseup', function() {
 	cat_location = map.getCenter();
 	console.log(cat_location);
-	nearby_locations = [] //clear stored json
+	nearby_locations = []; //clear stored json
 
 	var radius = 500; //meters
 	var types = "points_of_interest";

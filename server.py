@@ -20,6 +20,7 @@ import etsy_api
 from etsy_api import (Etsy_API, Listings)
 
 import doco_api
+import nyt_newswire_fetch
 
 from config import SECRET_KEY, PORT
 
@@ -112,6 +113,11 @@ def donors_choose():
         return_value += item['fundURL'] 
     
     return return_value
+
+@app.route('/nyt/')
+def nyt():
+    data = nyt_newswire_fetch.getArticle()
+    return data
 
 if __name__=="__main__":
     app.run(debug=True, host='0.0.0.0', port=PORT)

@@ -31,7 +31,7 @@ def index():
     if not('user' in session):
         # push random user id if you don't have it
         session['user'] = "rand"
-    return render_template('index.html')
+    return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI)
 
 @app.route('/test_api')
 def test_api():
@@ -43,7 +43,7 @@ def test_api():
 def process_facebook():
     usercode = request_handler.args.get('code')
 
-    request_url = "https://foursquare.com/oauth2/access_token?client_id=%s&client_secret=%s&grant_type=authorization_code&redirect_uri=%s&code=CODE", FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI
+    request_url = "https://foursquare.com/oauth2/access_token?client_id=%s&client_secret=%s&grant_type=authorization_code&redirect_uri=%s&code=CODE" % (FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI)
     return ""
 
 if __name__=="__main__":

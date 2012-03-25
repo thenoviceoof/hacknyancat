@@ -26,7 +26,7 @@ function initialize(lat,lng) {
 	nearby_locations = []; //clear stored json
 
 	var radius = 500; //meters
-	var types = "points_of_interest";
+	var types = "food";
 	var lat = cat_location.Ua;
 	var lng = cat_location.Va;
 	var places_url = "http://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";//don't put actual api key

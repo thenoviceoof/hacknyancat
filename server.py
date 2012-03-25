@@ -50,6 +50,13 @@ def index():
         post = {"points": 0}
         id = db.users.insert(post)
         session['user'] = id
+
+    if not('lat' in session):
+        session['lat'] = 40.728429
+
+    if not('long' in session:
+        session['long'] = -73.995605
+
     return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI,
                            id= session['user'])
 
@@ -69,7 +76,7 @@ def process_facebook():
     usercode_json = requests.get(request_url)
     usercode_json = json.loads(usercode_json.text)
 
-    data = requests.get('https://api.foursquare.com/v2/venues/search?radius=1000&v=20120425&ll=40,-74&oauth_token='+usercode_json['access_token'])
+    data = requests.get('https://api.foursquare.com/v2/venues/search?radius=1000&v=20120425&ll=%s,-%s&oauth_token='+usercode_json['access_token']) % str(session['lat']), str(session['long'])
 
     data = data.text
     data_json = json.loads(data)
@@ -83,6 +90,11 @@ def process_google_maps():
     """ Proxy for google places api """
     
     location    = request_handler.args.get('location')
+    lat, longit = location.split(',')
+    session['lat'] = float(lat)
+    session['long'] = float(longit) 
+
+
     radius      = request_handler.args.get('radius')
     key         = request_handler.args.get('key')
     sensor      = request_handler.args.get('sensor')
@@ -107,7 +119,7 @@ def etsy():
 
 @app.route('/dc-results/')
 def donors_choose():
-    data_dict = doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
+    data_dict = doco_api.Geo().ProjectsNearLatLong(session['lat'],session['long'])
     return_value = ""
     for item in data_dict['proposals']:
         return_value += item['fundURL'] 

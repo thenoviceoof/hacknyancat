@@ -51,9 +51,13 @@ class Doco_API(object):
         url_list.append('&APIKey=%s' % API_KEY)
         url_list.append('&%s' % str(directory))
         url = ''.join(url_list)
-        print url
+        #print url
         r = requests.get(url)
-        return json.loads(r.content)
+        j = json.loads(r.content)
+        proposals = j["proposals"]
+        titles = [x["title"] for x in proposals]
+        proposalURLs = [x["proposalURL"] for x in proposals]
+        return (titles, proposalURLs)
 
 
 class Geo(Doco_API):

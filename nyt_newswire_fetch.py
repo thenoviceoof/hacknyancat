@@ -45,7 +45,7 @@ while status["status"] != "DONE":
     status = json.loads(r.content)
 
 img_url = "http://nyancat.ninjapiraterockstardeveloper.com/static/nyancat.gif"
-img_dom = "<img src='%s'/>" % img_url
+img_dom = "<img alt='Nyancat' src='%s' class='news_nyan'/>" % img_url
 re_str = re.sub("<TOPIC>.*?</TOPIC>", img_dom, status["data"])
 print("done with parse.ly")
 

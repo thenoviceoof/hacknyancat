@@ -35,9 +35,10 @@ function initialize(lat,lng) {
 	console.log(nearby_locations_json);
 	
 	nearby_locations_json_results = nearby_locations_json.results;
-	
-	if(nearby_locations_json_results != "undefined"){
+	console.log(nearby_locations_json_results);
+	if(nearby_locations_json_results != undefined){
 	    for(var i=0; i<nearby_locations_json_results.length; i++){
+		console.log("adding a nearby_location");
 		nearby_locations.append({
 		    "lat": nearby_locations_json_results[i].geometry.location.lat,
 		    "lng": nearby_locations_json_results[i].geometry.location.lng,
@@ -56,6 +57,7 @@ function initialize(lat,lng) {
 var place_markers = function(nearby_locations)
 {
     for(var i=0; i<nearby_locations.length; i++){
+	console.log("placing a marker");
 	var marker = new google.maps.Marker({
 	    position: new google.maps.LatLng(nearby_locations[i].lat,nearby_locations[i].lng),
 	    map: map,

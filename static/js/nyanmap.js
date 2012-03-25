@@ -36,7 +36,8 @@ function initialize(lat,lng) {
 	nearby_locations_json = $.getJSON(places_url);//ask server for json data, stores in nearby in api.js
 	console.log(nearby_locations_json);
 	a = nearby_locations_json;
-	nearby_locations_json_results = eval('('+nearby_locations_json.responseText+')').results;
+	b = eval('('+nearby_locations_json.responseText+')')
+	nearby_locations_json_results = b.results;
 	console.log(nearby_locations_json_results);
 	if(nearby_locations_json_results != undefined){
 	    for(var i=0; i<nearby_locations_json_results.length; i++){

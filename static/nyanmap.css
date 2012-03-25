@@ -34,3 +34,10 @@ body
     height: 35px;
 }
 
+
+#sidebar
+{
+    height: 100%;
+    align: right;
+    width: 50 px;
+}

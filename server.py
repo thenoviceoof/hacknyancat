@@ -10,9 +10,14 @@ import json
 
 import urllib
 
-#from config import SECRET_KEY
+import pymongo
+from pymongo import Connection
 
-SECRET_KEY = "key"
+import hashlib
+
+from config import SECRET_KEY, PORT
+
+# SECRET_KEY = "
 
 ################################################################################
 
@@ -28,18 +33,26 @@ FS_CLIENT_SECRET = "E4EATPZBLVLMTJSIUZRK3T2O3UGR4IARF50UP35Q0Y0KJ5TP"
 FS_REDIRECT_URI = urllib.urlencode([("redirect_uri","http://nyancat.ninjapiraterockstardeveloper.com/apifeedback/foursquare")])
 
 
+connection = Connection()
+db = connection["hacknycat"]
+
 
 @app.route('/')
 def index():
     if not('user' in session):
-        # push random user id if you don't have it
-        session['user'] = "rand"
-    return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI)
+        # create a user, get the id
+        post = {"points": 0}
+        id = db.users.insert(post)
+        session['user'] = id["_id"]
+    return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI,
+                           id= session['user'])
 
 @app.route('/test_api')
 def test_api():
     if not('user' in session):
-        pass
+        redirect("/")
+    user = db.users.find_one({"_id":session["user"]})
+    # do something with a user
     return render_template('test_api.json')
 
 @app.route('/apifeedback/foursquare')
@@ -53,4 +66,4 @@ def process_facebook():
     return "Hello World \n" + str(usercode_json['access_token'] )
 
 if __name__=="__main__":
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True, host='0.0.0.0', port=PORT)

@@ -104,7 +104,7 @@ def etsy():
 
     return data
 
-@app.route('/dc-results/'):
+@app.route('/dc-results/')
 def donors_choose():
     data_dict = doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
     return_value = ""

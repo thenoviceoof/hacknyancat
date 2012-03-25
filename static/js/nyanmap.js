@@ -23,7 +23,7 @@ function initialize(lat,lng) {
     google.maps.event.addListener(map, 'mouseup', function() {
 	cat_location = map.getCenter();
 	console.log(cat_location);
-	nearby_locations = [] //clear stored json
+	nearby_locations = []; //clear stored json
 
 	var radius = 500; //meters
 	var types = "points_of_interest";
@@ -36,7 +36,7 @@ function initialize(lat,lng) {
 	
 	nearby_locations_json_results = nearby_locations_json.results;
 	
-	if(nearby_locations_json_results.length != "undefined"){
+	if(nearby_locations_json_results != "undefined"){
 	    for(var i=0; i<nearby_locations_json_results.length; i++){
 		nearby_locations.append({
 		    "lat": nearby_locations_json_results[i].geometry.location.lat,

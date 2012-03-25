@@ -1,0 +1,8 @@
+# module to contain all our sensitive api keys
+################################################################################
+# template: fill in api keys below
+
+SECRET_KEY = ""
+
+NYT_API_KEY = ""
+

@@ -2,3 +2,13 @@ README
 --------------------------------------------------------------------------------
 
 Wherein we try and make a stupid app that uses all the APIs
+
+etsy_api.py
+""" to use:
+import etsy_api
+from api import (Etsy_API, Listings)
+etsy_api = Etsy_API()
+etsy_api.Listings().findAllListingActive('nyancat')
+"""
+returns python dictionary of JSON results~
+{u'count': 50100, u'type': u'Listing', u'pagination': {u'effective_limit': 25, u'effective_page': 1, u'next_page': 2, u'effective_offset': 0, u'next_offset': 25}, u'params': {u'category': None, u'min_price': None, u'lat': None, u'tags': None, u'color': None, u'sort_on': u'created',  ...

@@ -1,0 +1,28 @@
+<html>
+  <head>
+      <script type="text/javascript" src="http://player.longtailvideo.com/jwplayer.js"></script>
+  </head>
+  
+  <body style="background-color: #ccc">
+      <h1>NYANNNNNN (courtesy of longtailvideo's jw player)</h1>
+      <div class="container">
+          <div id="mediaplayer">Player goes here</div>
+    </div>
+      
+      <script type="text/javascript">
+         jwplayer("mediaplayer").setup({
+          flashplayer: "http://player.longtailvideo.com/player.swf",
+              width: 720,
+              height: 406,
+              file: "http://www.youtube.com/watch?v=wZZ7oFKsKzY",
+              events: {
+               onPlay: function(evt) {
+                   alert("NYANNNNNNN");    
+               }    
+              }
+         });
+      </script>
+  </body>
+
+
+</html>

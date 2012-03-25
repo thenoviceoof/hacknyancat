@@ -37,10 +37,9 @@ function initialize(lat,lng) {
         /*
 	console.log(nearby_locations_json);
 	a = nearby_locations_json;
-	b = eval('('+nearby_locations_json.responseText+')')
-	nearby_locations_json_results = b.results;
+	nearby_locations_json_results = eval('('+a.responseText+')').results;
 	console.log(nearby_locations_json_results);
-	if(nearby_locations_json_results != undefined){
+	if(nearby_locations_json_results_results != undefined){
 	    for(var i=0; i<nearby_locations_json_results.length; i++){
 		console.log("adding a nearby_location");
 		nearby_locations.append({

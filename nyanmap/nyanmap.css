@@ -13,6 +13,24 @@ body
 #map_canvas
 {
     height: 100%:
+    width: 100%;
+    z-index: 1;
 }
 
+
+#nyancat
+{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    bottom: 50%;
+    right: 50%;
+
+}
+
+#top_bar
+{
+    height: 35px;
+}
 

@@ -78,8 +78,8 @@ code=%s" % (FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI, usercode)
     usercode_json = json.loads(usercode_json.text)
 
     foursquare_url = 'https://api.foursquare.com/v2/venues/search?\
-radius=1000&v=20120425&ll=%s,-%s&oauth_token=\
-%s' % (str(session['lat']), str(session['long']), usercode_json['access_token'])
+radius=1000&v=20120425&ll=%f,%f&oauth_token=\
+%s' % (session['lat'],session['long'], usercode_json['access_token'])
     data = requests.get(foursquare_url)
 
     data = data.text

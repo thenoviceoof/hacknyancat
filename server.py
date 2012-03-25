@@ -20,7 +20,6 @@ import etsy_api
 from etsy_api import (Etsy_API, Listings)
 
 import doco_api
-import nyt_newswire_fetch
 
 from config import SECRET_KEY, PORT
 
@@ -54,7 +53,7 @@ def index():
     if not('lat' in session):
         session['lat'] = 40.728429
 
-    if not('long' in session:
+    if not('long' in session):
         session['long'] = -73.995605
 
     return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI,
@@ -72,11 +71,16 @@ def test_api():
 def process_facebook():
     usercode = request_handler.args.get('code')
 
-    request_url = "https://foursquare.com/oauth2/access_token?client_id=%s&client_secret=%s&grant_type=authorization_code&%s&code=%s" % (FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI, usercode)
+    request_url = "https://foursquare.com/oauth2/access_token?\
+client_id=%s&client_secret=%s&grant_type=authorization_code&%s&\
+code=%s" % (FS_CLIENT_ID, FS_CLIENT_SECRET, FS_REDIRECT_URI, usercode)
     usercode_json = requests.get(request_url)
     usercode_json = json.loads(usercode_json.text)
 
-    data = requests.get('https://api.foursquare.com/v2/venues/search?radius=1000&v=20120425&ll=%s,-%s&oauth_token='+usercode_json['access_token']) % str(session['lat']), str(session['long'])
+    foursquare_url = 'https://api.foursquare.com/v2/venues/search?\
+radius=1000&v=20120425&ll=%s,-%s&oauth_token=\
+%s' % (str(session['lat']), str(session['long']), usercode_json['access_token'])
+    data = requests.get(foursquare_url)
 
     data = data.text
     data_json = json.loads(data)
@@ -100,9 +104,14 @@ def process_google_maps():
     sensor      = request_handler.args.get('sensor')
     types       = request_handler.args.get('types')
 
-    args = urllib.urlencode([("location", location), ('radius', radius), ('key', key), ('sensor', sensor), ('types', types)])
+    args = urllib.urlencode([("location", location),
+                             ('radius', radius),
+                             ('key', key),
+                             ('sensor', sensor),
+                             ('types', types)])
 
-    google_json = requests.get("https://maps.googleapis.com/maps/api/place/search/json?"+args)
+    google_url = "https://maps.googleapis.com/maps/api/place/search/json?"+args
+    google_json = requests.get(google_url)
     google_json = google_json.text
 
     return google_json
@@ -126,10 +135,13 @@ def donors_choose():
     
     return return_value
 
-@app.route('/nyt/')
+@app.route('/newswire/')
 def nyt():
-    data = nyt_newswire_fetch.getArticle()
-    return data
+    news_obj = db.users.find().sort({"time": -1})[0]
+    if news_obj:
+        return news_obj["news"]
+    else:
+        return "Nyan "*50
 
 if __name__=="__main__":
     app.run(debug=True, host='0.0.0.0', port=PORT)

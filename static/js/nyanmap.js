@@ -32,9 +32,10 @@ function initialize(lat,lng) {
 	var places_url = "http://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";//don't put actual api key
 	console.log($.getJSON(places_url));
 	nearby_locations_json = $.getJSON(places_url);//ask server for json data, stores in nearby in api.js
-//	console.log(nearby_locations_json);
+	console.log(nearby_locations_json);
+	a = nearby_locations_json;
 	nearby_locations_json_results = eval('('+nearby_locations_json.responseText+')').results;
-//	console.log(nearby_locations_json_results.results);
+	console.log(nearby_locations_json_results.results);
 	if(nearby_locations_json_results != undefined){
 	    for(var i=0; i<nearby_locations_json_results.length; i++){
 		console.log("adding a nearby_location");

@@ -3,20 +3,27 @@ function initialize(lat,lng) {
 
     var myOptions = {
         center: cat_location,
-        zoom: 6,
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.SATELLITE
     };
     map = new google.maps.Map(document.getElementById("map_canvas"),
 				  myOptions);
 
-    https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AddYourOwnKeyHere
+    https://nyancat.ninjapiraterockstardeveloper.com/google/places/?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AddYourOwnKeyHere
     var radius = 500;
     var types = "food";
-    var places_url = "https://maps.googleapis.com/maps/api/place/search/json?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";
-
-    console.log(places_url);
+    var places_url = "https://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";
 
     var location_data = $.getJSON(places_url);
+
+    console.log(location_data);
+
+//updates center when user drags the map
+
+    
+
+
+
 }
 
 var panToCat = function()
@@ -31,8 +38,3 @@ var panToCat = function()
 	setTimeout(console.log('hi'),3000);
     }
 }
-
-/*
-var searchNearbyPlaces = function(latLng)
-{*/
-    

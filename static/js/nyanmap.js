@@ -1,6 +1,5 @@
 function initialize(lat,lng) {
-    var cat_location = new google.maps.LatLng(lat,lng);
-
+    cat_location = new google.maps.LatLng(lat,lng);
     var myOptions = {
         center: cat_location,
         zoom: 14,
@@ -20,7 +19,11 @@ function initialize(lat,lng) {
 
 //updates center when user drags the map
 
-    
+    google.maps.event.addListener(map, 'center_changed', function() {
+	cat_location = map.getCenter();
+	console.log(cat_location);
+    });
+
 
 
 

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     (function($) {
         // load up data into appropriate sections
-        load_sidebar();
+        //load_sidebar();
     })(jQuery);
 });
 

@@ -128,11 +128,12 @@ def etsy():
 
 @app.route('/dc-results/')
 def donors_choose():
-    data_dict = doco_api.Geo().ProjectsNearLatLong(session['lat'],session['long'])
+    titles, links = doco_api.Geo().ProjectsNearLatLong(session['lat'],session['long'])
     return_value = ""
-    for item in data_dict['proposals']:
-        return_value += item['fundURL'] 
-    
+    idx = 0
+    while idx != len(titles):
+        return_value += titles[idx] + "<br />" + links[idx] + "<br />"
+        idx += 1
     return return_value
 
 @app.route('/newswire/')

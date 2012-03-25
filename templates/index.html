@@ -19,6 +19,14 @@
     <script src="/static/js/news_nyan.js"></script>
 
     <script src="/static/js/load_sidebar.js"></script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" type="text/javascript"></script>
+
+	<script>
+        var AviaryJS = AviaryJS || {};
+        AviaryJS.isLoggedIn = false;
+	</script>
+	<script src="js/aviary.js" type="text/javascript"></script>
     
   </head>
 
@@ -46,6 +54,7 @@
       </div>
 
       <iframe src="/etsy-results/">
+		
       </iframe>
 
       <iframe src="/dc-results">
@@ -53,7 +62,18 @@
 
       <iframe src="/static/longtail.html">
       </iframe>
+	  
     </div>
+	
+	<script>
+		var img = document.createElement("img");
+            img.setAttribute("src", "http://theawesomer.com/photos/2011/04/041911_nyan_pop_tart_cat_t.jpg");
+            img.setAttribute("id", "feather_demo"); // style="display:;" /> $('<img />');
+            img.setAttribute("style", "display:none");
+            document.body.appendChild(img);
+		</script>
+		
+		<a href="#" onclick="return AviaryJS.showFeather();" class="action_button">Edit Cat</a>
 
    </div>
 

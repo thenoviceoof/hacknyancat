@@ -2,31 +2,31 @@ $(document).ready(function() {
     (function($) {
         // load up data into appropriate sections
 
-        // etsy
-        $.ajax({
-            url: '/etsy-results/',
-            dateType: "text",
-            success: function(data, textStatus) {
-                $("#etsy-sidebar").text(data);
-            }
-        });
+        // // etsy
+        // $.ajax({
+        //     url: '/etsy-results/',
+        //     dateType: "html",
+        //     success: function(data, textStatus) {
+        //         $("#etsy-sidebar").html(data);
+        //     }
+        // });
 
-        // dc
-        $.ajax({
-            url: '/dc-results/',
-            dateType: "text",
-            success: function(data, textStatus) {
-                $("#dc-sidebar").text(data);
-            }
-        });
+        // // dc
+        // $.ajax({
+        //     url: '/dc-results/',
+        //     dateType: "html",
+        //     success: function(data, textStatus) {
+        //         $("#dc-sidebar").html(data);
+        //     }
+        // });
 
-        // longtail
-        $.ajax({
-            url: '/static/longtail.html',
-            dateType: "text",
-            success: function(data, textStatus) {
-                $("#longtail-sidebar").text(data);
-            }
-        });
+        // // dc
+        // $.ajax({
+        //     url: '/static/longtail.html',
+        //     dateType: "html",
+        //     success: function(data, textStatus) {
+        //         $("#dc-sidebar").html(data);
+        //     }
+        // });
     })(jQuery);
 });

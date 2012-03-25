@@ -48,21 +48,22 @@ class Tumblr_API(object):
 
     def call_api(self, directory):
         url_list = [self.base_url]
+        url_list.append('/%s' % str(directory))
         url_list.append('/posts/photo?&api_key=%s' % API_KEY)
-        url_list.append('&%s' % str(directory))
         url = ''.join(url_list)
         print url
         r = requests.get(url)
         j = json.loads(r.content)
-        #proposals = j["proposals"]
-        #results = [x["title"] for x in proposals]
-        #return results
+        response = j["response"]
+        listposts = response["posts"]
+        urlpics = [ x["photos"][0]["original_size"]["url"] for x in listposts]
+        return urlpics 
 
 
 class Posts(Tumblr_API):
 
     def __init__(self):
-        self.base_url = 'http://api.tumblr.com/v2/blog/'
+        self.base_url = 'http://api.tumblr.com/v2/blog'
 
     def PhotosFromUser(self, username):
         """

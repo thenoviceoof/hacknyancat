@@ -36,14 +36,13 @@ FS_REDIRECT_URI = urllib.urlencode([("redirect_uri","http://nyancat.ninjapirater
 connection = Connection()
 db = connection["hacknycat"]
 
-
 @app.route('/')
 def index():
     if not('user' in session):
         # create a user, get the id
         post = {"points": 0}
         id = db.users.insert(post)
-        session['user'] = id["_id"]
+        session['user'] = id
     return render_template('index.html', FS_REDIRECT_URI=FS_REDIRECT_URI,
                            id= session['user'])
 
@@ -63,7 +62,31 @@ def process_facebook():
     usercode_json = requests.get(request_url)
     usercode_json = json.loads(usercode_json.text)
 
-    return "Hello World \n" + str(usercode_json['access_token'] )
+    data = requests.get('https://api.foursquare.com/v2/venues/search?radius=1000&v=20120425&ll=40,-74&oauth_token='+usercode_json['access_token'])
+
+    data = data.text
+    data_json = json.loads(data)
+    response = ""
+    for item in data_json['response']['venues']:
+        response += item['name'] + '\n'
+    return response
+
+@app.route('/google/places/')
+def process_google_maps():
+    """ Proxy for google places api """
+    
+    location    = request_handler.args.get('location')
+    radius      = request_handler.args.get('radius')
+    key         = request_handler.args.get('key')
+    sensor      = request_handler.args.get('sensor')
+    types       = request_handler.args.get('types')
+
+    args = urllib.urlencode([("location", location), ('radius', radius), ('key', key), ('sensor', sensor), ('types', types)])
+
+    google_json = requests.get("https://maps.googleapis.com/maps/api/place/search/json?"+args)
+    google_json = google_json.text
+
+    return google_json 
 
 if __name__=="__main__":
     app.run(debug=True, host='0.0.0.0', port=PORT)

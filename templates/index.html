@@ -17,16 +17,14 @@
 
     <link href="/static/css/news_nyan.css" type="text/css" rel="stylesheet"/>
     <script src="/static/js/news_nyan.js"></script>
+
+    <script src="/static/js/load_sidebar.js"></script>
     
   </head>
 
   <body onload="initialize(40.728429,-73.995605)">
    <div id="top_bar">
      <img id="hacknyancat" src="../static/hacknyancat_logo.png" width="102" height="35"/>
-     <a href="https://foursquare.com/oauth2/authenticate?client_id=IGHYIIQIRRVUGIMJ05XGMGXIGH25WVZ5CLFM53C5BXXQXHTN&response_type=code&{{ FS_REDIRECT_URI }}">Sign in with Foursquare to list locations near NyanCat!</a>
-     <a href="etsy-results/">Nyancat on Etsy!</a>
-     <a href="dc-results/">Nearby Donors Choose Projects!</a>
-     <a href="static/longtail.html">Watch Nyancat with Longtail's JWPlayer</a>
    </div>
 
 
@@ -37,12 +35,25 @@
     </div>
 
     <div id="map_canvas">
-<!--      <div id="nyancat"><img src="nyancat.gif" alt="nyancat" /></div>-->
+      <!-- <div id="nyancat"><img src="nyancat.gif" alt="nyancat" /></div> -->
     </div>
 
     <div id="sidebar">
-   buttons
-   </div>
+      <div id="foursquare-sidebar">
+        <a href="https://foursquare.com/oauth2/authenticate?client_id=IGHYIIQIRRVUGIMJ05XGMGXIGH25WVZ5CLFM53C5BXXQXHTN&response_type=code&{{ FS_REDIRECT_URI }}">
+          <button>Foursquare</button>
+        </a>
+      </div>
+
+      <div id="etsy-sidebar">
+      </div>
+
+      <div id="dc-sidebar">
+      </div>
+
+      <div id="longtail-sidebar">
+      </div>
+    </div>
 
    </div>
 

@@ -1,15 +1,15 @@
 $(document).ready(function() {
     (function($) {
         // load up data into appropriate sections
-        load_sidebar();
+        //load_sidebar();
     })(jQuery);
 });
 
 function load_sidebar() {
     // etsy
-    $("#etsy-sidebar")[0].contentDocument.location.reload(true);
-    $("#dc-sidebar")[0].contentDocument.location.reload(true);
-    $("#longtail-sidebar")[0].contentDocument.location.reload(true);
+    // $("#etsy-sidebar")[0].contentDocument.location.reload(true);
+    // $("#dc-sidebar")[0].contentDocument.location.reload(true);
+    // $("#longtail-sidebar")[0].contentDocument.location.reload(true);
 
     // $.ajax({
     //     url: '/etsy-results/',

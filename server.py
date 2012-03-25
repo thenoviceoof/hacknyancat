@@ -19,6 +19,8 @@ import hashlib
 import etsy_api
 from etsy_api import (Etsy_API, Listings)
 
+import tumblr_api
+
 import doco_api
 
 from config import SECRET_KEY, PORT

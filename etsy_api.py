@@ -9,6 +9,8 @@ http://www.etsy.com/developers/documentation/reference/listing
 
 from config import ETSY_API_KEY
 
+import requests
+
 API_KEY = ETSY_API_KEY
 
 # http://openapi.etsy.com/v2/private/listings/active?keywords={keyword}&api_key=
@@ -46,11 +48,9 @@ class Etsy_API(object):
         self.base_url = 'http://openapi.etsy.com/v2/private/'
 
     def call_api(self, directory):
-        url_list = [self.base_url]
-        url_list.append('&api_key=' + API_KEY)
-        url = ''.join(url_list)
-        data = urlopen(url).read()
-        return json.loads(data)
+        url = self.base_url + '&'+ directory+ '&api_key=' + API_KEY
+        data = requests.get(url)
+        return json.loads(data.text)
 
 
 class Listings(Etsy_API):

@@ -20,24 +20,20 @@ all/all/24.json?api-key={apikey}&offset={offset}".format(apikey=API_KEY,
                                                          offset=0)
 
 r = requests.get(url)
-print(r.content)
 j = json.loads(r.content)
 
 results = j["results"]
 titles = [res["title"] + ": " + res["abstract"] for res in results]
 title_str = " | ".join(titles)
-print(titles)
 
 ########################################
 # join titles, push up to parse.ly
 
-r = requests.post(PARSELY_API_URL+"parse", {"text": titles})
-print(r.content)
+r = requests.post(PARSELY_API_URL+"parse", {"text": title_str})
 status_url = json.loads(r.content)["url"][1:]
 
 i = 1
 r = requests.get(PARSELY_API_URL+status_url)
-print(r.content)
 status = json.loads(r.content)
 while status["status"] != "DONE":
     i *= 2
@@ -45,10 +41,8 @@ while status["status"] != "DONE":
     # reget the parse
     r = requests.get(PARSELY_API_URL+status_url)
     status = json.loads(r.content)
-    print(r.content)
 
-status["data"]=re.sub("<TOPIC>.*?</TOPIC>","<img src ='http://farm6.staticflickr.com/5149/buddyicons/1636317@N24.jpg?1303318659'></img>",status["data"]);
-
-print(status["data"])
-
-
+data= re.sub("<TOPIC>.*?</TOPIC>",
+             "<img src ='http://farm6.staticflickr.com/5149/buddyicons/1636317@N24.jpg?1303318659'></img>",
+             status["data"]);
+print data

@@ -3,12 +3,26 @@ README
 
 Wherein we try and make a stupid app that uses all the APIs
 
+~~~
 etsy_api.py
 """ to use:
 import etsy_api
 from api import (Etsy_API, Listings)
-etsy_api = Etsy_API()
 etsy_api.Listings().findAllListingActive('nyancat')
 """
 returns python dictionary of JSON results~
+=>Sample results
 {u'count': 50100, u'type': u'Listing', u'pagination': {u'effective_limit': 25, u'effective_page': 1, u'next_page': 2, u'effective_offset': 0, u'next_offset': 25}, u'params': {u'category': None, u'min_price': None, u'lat': None, u'tags': None, u'color': None, u'sort_on': u'created',  ...
+
+
+~~
+Donors Choose API
+
+import doco_api
+from doco_api import (Doco_API, Geo)
+doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
+
+=>Sample results (python dictionary of JSON results):
+>>> doco_api.Geo().ProjectsNearLatLong(40.776104,-73.920822)
+{u'index': u'0', u'max': u'10', u'proposals': [{u'totalPrice': u'596.93', u'percentFunded': u'85', u'schoolName': u'Westside Elementary School', u'fundURL': u'https://secure.donorschoose.org/donors/givingCart.html?proposalid=768898&amp;donationAmount=&amp;utm_source=api&amp;utm_medium=feed&amp;utm_content=fundlink&amp;utm_campaign=DONORSCHOOSE', u'expirationDate': u'2012-05-02', u'proposalURL': u'http://www.donorschoose.org/donors/proposal.html?id=768898&amp;utm_source=api&amp;utm_medium=feed&amp;utm_content=bodylink&amp;utm_campaign=DONORSCHOOSE', u'teacherName': u'Mrs. Sellari', u'shortDescription': u'We are on a mission to terminate bullying in our classroom. I want students to learn to stand up for what is right by reporting acts of bullying and learning strategies for dealing with and...', u'id': u'768898', u'subject': {u'id': u'26', u'groupId': u'5', u'name': u'Character Education'}
+

@@ -12,7 +12,7 @@ function initialize(lat,lng) {
     https://nyancat.ninjapiraterockstardeveloper.com/google/places/?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AddYourOwnKeyHere
     var radius = 500;
     var types = "food";
-    var places_url = "https://?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";
+    var places_url = "https://nyancat.ninjapiraterockstardeveloper.com/google/places?location="+lat+","+lng+"&radius="+radius+"&types="+types+"&sensor=true&key=AIzaSyDVlmhMFLkex9hygFh8POvX7JwUAvdyX9s";
 
     var location_data = $.getJSON(places_url);
 
@@ -20,7 +20,7 @@ function initialize(lat,lng) {
 
 //updates center when user drags the map
 
-
+    
 
 
 
@@ -38,13 +38,3 @@ var panToCat = function()
 	setTimeout(console.log('hi'),3000);
     }
 }
-
-/*
-var searchNearbyPlaces = function(latLng)
-{*/
-
-var request_JSON = function()
-{
-
-}
-//https://nyancat.ninjapiraterockstardeveloper.com/google/places/?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AddYourOwnKeyHere

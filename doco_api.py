@@ -53,7 +53,10 @@ class Doco_API(object):
         url = ''.join(url_list)
         print url
         r = requests.get(url)
-        return json.loads(r.content)
+        j = json.loads(r.content)
+        proposals = j["proposals"]
+        results = [x["title"] for x in proposals]
+        return results
 
 
 class Geo(Doco_API):
